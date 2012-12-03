@@ -8,7 +8,7 @@ class Tomato
 							:end_time,
 							:abort_time
 
-	TOTAL_SECONDS = 60.0 * 25
+	TOTAL_SECONDS = 25.0
 
 	def initialize
 		@state = 'initialized'
@@ -42,7 +42,6 @@ class Tomato
 		@state = 'completed'
 		@end_time = Time.now
 		@complete_listener.call
-		exit
 	end
 
 	def abort
@@ -50,7 +49,6 @@ class Tomato
 		@abort_time = Time.now
 		@timer.stop
 		@abort_listener.call
-		exit
 	end
 
 	def mark_internal_interruption
